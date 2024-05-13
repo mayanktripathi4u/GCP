@@ -1,0 +1,19 @@
+{
+    "BigQuery Schema": [{
+        "name":"order_no",
+        "type":"INTEGER"
+    },
+    {
+        "name":"item_no",
+        "type":"INTEGER"
+    },
+    {
+        "name":"purchased_qty",
+        "type":"INTEGER"
+    },
+    {
+        "name":"purchased_date",
+        "type":"DATE"
+    }
+    ]
+}
