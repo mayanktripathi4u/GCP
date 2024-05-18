@@ -4,6 +4,8 @@ data "archive_file" "source" {
   source_dir  = "../src"
   output_path = "${path.module}/function.zip"
 }
+# path.module is the filesystem path of the module where the expression is placed. 
+# We do not recommend using path.module in write operations because it can produce different behavior depending on whether you use remote or local module sources.
 
 # Add source code zip to the Cloud Function's bucket (Cloud_function_bucket) 
 resource "google_storage_bucket_object" "zip" {
