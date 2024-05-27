@@ -24,9 +24,9 @@ resource "google_cloudfunctions_function" "generate_synthetic_data" {
   runtime               = "python310"
   project               = var.project-id
   region                = var.region
-  entry_point           = "generateData"
+  entry_point           = "generate_data"
   source_archive_bucket = google_storage_bucket.dataflow_bucket.name
-  source_archive_object = "functions/generate_synthetic_data.zip"
+  source_archive_object = google_storage_bucket_object.zip.name
   trigger_http          = true
 
   environment_variables = {

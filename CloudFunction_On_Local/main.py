@@ -1,6 +1,6 @@
 import os
 import json
-import faker
+from faker import Faker
 from google.cloud import pubsub_v1
 from flask import Flask, request
 
@@ -8,7 +8,7 @@ app = Flask(__name__)
 publisher = pubsub_v1.PublisherClient()
 topic_name = os.getenv('PUBSUB_TOPIC')
 
-fake = faker.Faker()
+fake = Faker()
 
 @app.route('/', methods=['POST'])
 def generate_data():
@@ -25,7 +25,6 @@ def generate_data():
     try:
         future = publisher.publish(topic_name, data=message_bytes)
         future.result()
-        print("Message Published Successfully")
         return 'Message published.', 200
     except Exception as e:
         print(e)
